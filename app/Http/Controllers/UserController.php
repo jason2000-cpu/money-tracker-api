@@ -49,7 +49,7 @@ class UserController extends Controller
     }
 
     public function createAccount(Request $request) {
-        $validate = $request->validate([
+        $validated = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
@@ -57,10 +57,10 @@ class UserController extends Controller
         ]);
 
         $user = User::create([
-            'first_name'=> $request->first_name,
-            'last_name'=> $request->last_name,
-            'email'=> $request->email,
-            'password'=> Hash::make($request->password),
+            'first_name'=> $validated['first_name'],
+            'last_name'=> $validated['last_name'],
+            'email'=> $validated['email'],
+            'password'=> Hash::make($validated['password']),
         ]);
 
         return response()->json([

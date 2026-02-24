@@ -12,10 +12,10 @@
 - This allows for fetching all users from the database
 
     ```
-        http://127.0.0.1:8000/api/users
+        GET: http://127.0.0.1:8000/api/users
     ```
 
-        #### sample response
+     ###### sample response
 
     ```
     [
@@ -51,10 +51,10 @@
   -  Total balance across all wallets
 
   ```
-    http://127.0.0.1:8000/api/user/<user-id>
+    GET: http://127.0.0.1:8000/api/user/<user-id>
   ```
 
-  #### Sample response
+  ###### Sample response
 
   ```
     {
@@ -83,11 +83,11 @@
 - This creates a user account 
 
 ```
- http://127.0.0.1:8000/api/user
+ POST: http://127.0.0.1:8000/api/user
 
 ```
 
-#### Request Body
+###### Request Body
 
 ```
     {
@@ -98,7 +98,7 @@
     }
 ```
 
-#### Sample response
+###### Sample response
 
 ```
     {
@@ -111,3 +111,75 @@
         }
     }
 ```
+
+
+### 4 Create Wallet
+ - This creates a user wallets
+
+ ```
+    POST: http://127.0.0.1:8000/api/wallet
+ ```
+
+ ###### Request Body
+
+ ```
+    {
+        "user_id": 1,
+        "balance": 90000,
+        "name": "Sole Business"
+    }
+ ```
+
+ ###### Sample response
+
+ ```
+    {
+        "message": "Wallet Created Successfully",
+        "wallet": {
+            "id": 10,
+            "name": "Sole Business",
+            "user_Id": 1,
+            "balance": 90000
+        }
+    }
+ ```
+
+ ### View User Wallet
+
+ - This selects a single wallet to view, which includes: wallet balance and all transactions for that wallet
+
+ ```
+    GET: http://127.0.0.1:8000/api/wallet
+ ```
+
+ ###### Request Body
+ ```
+    {
+        "wallet_id": 1,
+        "user_id": 1
+    }
+ ```
+
+ ###### Sample Response 
+
+ ```
+    {
+        "id": 1,
+        "name": "Cash Wallet",
+        "balance": "10000.00",
+        "transactions": [
+            {
+                "id": 1,
+                "description": "Sample transaction #1",
+                "amount": "27115.00",
+                "created_at": "2026-02-24T09:23:01.000000Z"
+            },
+            {
+                "id": 2,
+                "description": "Sample transaction #2",
+                "amount": "38423.00",
+                "created_at": "2026-02-24T09:23:01.000000Z"
+            },
+        ]
+    }
+ ```
