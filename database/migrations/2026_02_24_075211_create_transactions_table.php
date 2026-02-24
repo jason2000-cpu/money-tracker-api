@@ -16,7 +16,7 @@ return new class extends Migration
             $table->enum('type', ['income', 'expense']);
             $table->unsignedBigInteger('wallet_id');
             $table->text('description')->nullable();
-            $table->decimal('amount', 10, 2);
+            $table->decimal('amount', 10, 2, );
             $table->timestamps();
 
             $table->foreign('wallet_id')
