@@ -144,7 +144,7 @@
     }
  ```
 
- ### View User Wallet
+ ### 5 View User Wallet
 
  - This selects a single wallet to view, which includes: wallet balance and all transactions for that wallet
 
@@ -183,3 +183,39 @@
         ]
     }
  ```
+
+
+### 6 Create transaction
+  - This creates a transaction on a wallet
+
+  ```
+    POST: http://127.0.0.1:8000/api/transaction
+  ```
+
+ ###### Request Body
+    ```
+        {
+            "type": "expense",
+            "wallet_id": 1,
+            "amount": 500,
+            "description": "Bought lunch"
+        }
+    ```
+
+###### Sample Response
+
+    ```
+        {
+            "message": "Transaction successful",
+            "transaction": {
+                "wallet_id": 1,
+                "amount": 500,
+                "type": "expense",
+                "description": "Bought lunch",
+                "updated_at": "2026-02-24T18:13:50.000000Z",
+                "created_at": "2026-02-24T18:13:50.000000Z",
+                "id": 41
+            },
+            "balance": 9500
+        }
+    ```
