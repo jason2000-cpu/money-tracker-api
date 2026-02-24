@@ -9,4 +9,5 @@ Route::get('/hello', function () {
     ]);
 });
 
-Route::get('/user/{id}', [UserController::class, 'show']);
+Route::get('/user/{id}', [UserController::class, 'userProfile']);
+Route::get('/users', [UserController::class, 'users']);
